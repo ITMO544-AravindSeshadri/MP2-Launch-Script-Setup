@@ -11,9 +11,5 @@ aws autoscaling create-launch-configuration --launch-configuration-name ITMO-544
 aws autoscaling create-auto-scaling-group --auto-scaling-group-name itmo-544-extended-auto-scaling-group-2 --launch-configuration-name ITMO-544-launch-config --load-balancer-names MP1LoadBalancer --health-check-type ELB --min-size 3 --max-size 6 --desired-capacity 3 --default-cooldown 600 --health-check-grace-period 120 --vpc-zone-identifier $6
 aws autoscaling put-scaling-policy --auto-scaling-group-name itmo-544-extended-auto-scaling-group-2  --policy-name AravindScalingPolicy --scaling-adjustment 1 --adjustment-type ExactCapacity
 aws cloudwatch put-metric-alarm --alarm-name AddCapacity --metric-name CPUUtilization --namespace AWS/EC2 --statistic Average --period 60 --threshold 30 --comparison-operator GreaterThanOrEqualToThreshold --dimensions "Name=AutoScalingGroup,Value=itmo-544-extended-auto-scaling-group-2" --evaluation-periods 1 --alarm-actions arn:aws:autoscaling:us-west-2:681875787250:scalingPolicy:aeb16e5a-0e52-4eff-aa17-f7f7c5efcbe2:autoScalingGroupName/itmo-544-extended-auto-scaling-group-2:policyName/AravindScalingPolicy
-aws sns create-topic --name AravindMP2
-aws sns subscribe --topic-arn arn:aws:sns:us-west-2:681875787250:AravindMP2 --protocol email --notification-endpoint aravind7488@gmail.com
-aws sns set-topic-attributes --topic-arn arn:aws:sns:us-west-2:681875787250:AravindMP2 --attribute-name DisplayName --attribute-value AravindMP2
-aws sns publish --topic-arn "arn:aws:sns:us-west-2:681875787250:AravindMP2" --message "Welcome to AWS Email Service."
 aws rds create-db-instance --db-name ITMO544AravindDb --db-instance-identifier ITMO544AravindDb --db-instance-class db.t2.micro --engine MySql --allocated-storage 20 --master-username aravind --master-user-password password
 aws rds create-db-instance-read-replica --db-instance-identifier ITMO544AravindDbReadOnly --source-db-instance-identifier ITMO544AravindDb --db-instance-class db.t2.micro
