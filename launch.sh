@@ -15,5 +15,5 @@ aws sns create-topic --name AravindMP2
 aws sns subscribe --topic-arn arn:aws:sns:us-west-2:681875787250:AravindMP2 --protocol email --notification-endpoint aravind7488@gmail.com
 aws sns set-topic-attributes --topic-arn arn:aws:sns:us-west-2:681875787250:AravindMP2 --attribute-name DisplayName --attribute-value AravindMP2
 aws sns publish --topic-arn "arn:aws:sns:us-west-2:681875787250:AravindMP2" --message "Welcome to AWS Email Service."
-#aws rds create-db-instance --db-name ITMO544AravindDb --db-instance-identifier ITMO544AravindDb --db-instance-class db.t2.micro --engine MySql --allocated-storage 20 --master-username aravind --master-user-password password
-#aws rds create-db-instance-read-replica --db-instance-identifier ITMO544AravindDbReadOnly --source-db-instance-identifier ITMO544AravindDb --db-instance-class db.t2.micro
+aws rds create-db-instance --db-name ITMO544AravindDb --db-instance-identifier ITMO544AravindDb --db-instance-class db.t2.micro --engine MySql --allocated-storage 20 --master-username aravind --master-user-password password
+aws rds create-db-instance-read-replica --db-instance-identifier ITMO544AravindDbReadOnly --source-db-instance-identifier ITMO544AravindDb --db-instance-class db.t2.micro
